@@ -82,7 +82,7 @@ Caused by: io.netty.resolver.dns.DnsErrorCauseException: Query failed with NXDOM
  eureka:
   instance:
     prefer-ip-address: true
-    ip-address: [ipconfig로 검색한 내 IP]
+    ip-address: [ipconfig로 검색한 내 IP] or localhost
     instance-id: ${eureka.instance.ip-address}:${server.port}
  ```
  <img width="1861" height="152" alt="image" src="https://github.com/user-attachments/assets/b8d88031-93d6-4d35-8824-fefa669668fd" />
