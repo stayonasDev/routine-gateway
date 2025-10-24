@@ -1,6 +1,8 @@
 # Spring Gateway
 
 # 🔍Trouble
+- 유레카에 등록되었지만 유레카에 등록된 이름으로 DNS 검색하여 문제
+
 ```groovy
 ava.net.UnknownHostException: Failed to resolve 'DESKTOP-12MCCAQ.mshome.net' [A(1)] after 2 queries 
 	at io.netty.resolver.dns.DnsResolveContext.finishResolve(DnsResolveContext.java:1150) ~[netty-resolver-dns-4.1.127.Final.jar:4.1.127.Final]
@@ -60,8 +62,9 @@ Caused by: io.netty.resolver.dns.DnsErrorCauseException: Query failed with NXDOM
 2025-10-24T16:03:12.185+09:00 DEBUG 9992 --- [gateway-service] [reshExecutor-%d] o.s.c.g.r.RouteDefinitionRouteLocator    : RouteDefinition matched: routine-service
 ```
 <img width="1867" height="212" alt="image" src="https://github.com/user-attachments/assets/b6a87183-fbb1-4071-8296-773661b3061d" />
-- 유레카에 등록되었지만 유레카에 등록된 이름으로 DNS 검색하여 문제
+
 ## 해결
+
 <details>
 	<summary>시도 순서</summary>
 	
