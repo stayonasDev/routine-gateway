@@ -61,3 +61,21 @@ Caused by: io.netty.resolver.dns.DnsErrorCauseException: Query failed with NXDOM
 ```
 <img width="1867" height="212" alt="image" src="https://github.com/user-attachments/assets/b6a87183-fbb1-4071-8296-773661b3061d" />
 - 유레카에 등록되었지만 유레카에 등록된 이름으로 DNS 검색하여 문제
+## 해결
+<details>
+	<summary>시도 순서</summary>
+	1. 웹 검색과 공식 문서에서 Spring cloud를 찾아 보았다. 
+	2. 디스커버리 클라이언트 서버에 eureka.instance.prefer-ip-address:true로 설정하여도 문제가 해결되지 않았다.
+	3. 주소의 문제인가 싶어 cmd 창에서 ipconfig를 사용해 내 주소를 알아내 서버에 주소를 바꿔 보았다.
+	4. 문제가 끝내 해결되지 않아 캐시 무효화로 모든 캐시를 삭제 해보았지만 유레카 서버와 클라이언트는 DESKTOP... 서버 이름으로 등록된다.
+	5. Local의 DNS 문제인지 hosts 파일을 검사해보았다.
+ </details>
+ - ip-address만 적는게 아니라 instance-id와 함께 명시해야 유레카 서버에 정상적으로 등록되었다.
+ ```groovy
+ eureka:
+  instance:
+    prefer-ip-address: true
+    ip-address: 192.168.0.1
+    instance-id: ${eureka.instance.ip-address}:${server.port}
+ ```
+ <img width="1861" height="152" alt="image" src="https://github.com/user-attachments/assets/b8d88031-93d6-4d35-8824-fefa669668fd" />
