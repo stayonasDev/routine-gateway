@@ -12,21 +12,26 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://localhost:8765/eureka
+      defaultZone: http://routine-eureka:8765/eureka
 
 spring:
   application:
-    name: sc-gateway
+    name: routine-gateway
 
   cloud:
     gateway:
       routes:
+        - id: routine-test
+          uri: http://routine-service:8080
+          predicates:
+            - Path=/hello
+
         - id: routine-service
-          uri: lb:ROUTINE-SERVICE
+          uri: http://routine-service:8080
           predicates:
             - Path=/routines/**
-#          filters:
-#            - RewritePath=/routines/(?<segment>.*), /${segment}
+              #filters:
+              #- RewritePath=/routines/(?<segment>/*), /${segment}
 
         #게이트웨이가 유레카에 등록된 서비스를 자동으로 라우팅하기 위함
 #      discovery:
